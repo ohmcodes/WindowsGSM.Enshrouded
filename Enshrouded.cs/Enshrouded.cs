@@ -56,7 +56,26 @@ namespace WindowsGSM.Plugins
         // - Create a default cfg for the game server after installation
         public async void CreateServerCFG()
         {
-            UpdateConfig();
+            var serverConfig = new
+            {
+                name = $"{_serverData.ServerName}",
+                password = "",
+                saveDirectory = "./savegame",
+                logDirectory = "./logs",
+                ip = $"{_serverData.ServerIP}",
+                gamePort = _serverData.ServerPort,
+                queryPort = _serverData.ServerQueryPort,
+                slotCount = _serverData.ServerMaxPlayer
+            };
+
+            // Convert the object to JSON format
+            string jsonContent = JsonConvert.SerializeObject(serverConfig, Formatting.Indented);
+
+            // Specify the file path
+            string filePath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "enshrouded_server.json");
+
+            // Write the JSON content to the file
+            File.WriteAllText(filePath, jsonContent);
         }
 
         // - Start server function, return its Process to WindowsGSM
@@ -179,9 +198,6 @@ namespace WindowsGSM.Plugins
             var serverConfig = new
             {
                 name = $"{_serverData.ServerName}",
-                password = "",
-                saveDirectory = "./savegame",
-                logDirectory = "./logs",
                 ip = $"{_serverData.ServerIP}",
                 gamePort = _serverData.ServerPort,
                 queryPort = _serverData.ServerQueryPort,
