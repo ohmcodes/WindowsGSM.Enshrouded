@@ -17,7 +17,7 @@ namespace WindowsGSM.Plugins
             name = "WindowsGSM.Enshrouded", // WindowsGSM.XXXX
             author = "ohmcodes",
             description = "WindowsGSM plugin for supporting Enshrouded Dedicated Server",
-            version = "1.0.0",
+            version = "1.0.1",
             url = "https://github.com/ohmcodes/WindowsGSM.Enshrouded", // Github repository link (Best practice)
             color = "#34c9eb" // Color Hex
         };
@@ -96,8 +96,6 @@ namespace WindowsGSM.Plugins
             param += $"-slotCount={_serverData.ServerMaxPlayer} ";
             param += $"-name=\"\"\"{_serverData.ServerName}\"\"\"";
 
-            UpdateConfig();
-
             // Prepare Process
             var p = new Process
             {
@@ -164,11 +162,6 @@ namespace WindowsGSM.Plugins
             Error = error;
             await Task.Run(() => { p.WaitForExit(); });
 
-            if( error != null && p != null)
-            {
-                UpdateConfig();
-            }
-
             return p;
         }
 
@@ -191,27 +184,6 @@ namespace WindowsGSM.Plugins
         {
             var steamCMD = new Installer.SteamCMD();
             return await steamCMD.GetRemoteBuild(AppId);
-        }
-
-        public void UpdateConfig()
-        {
-            var serverConfig = new
-            {
-                name = $"{_serverData.ServerName}",
-                ip = $"{_serverData.ServerIP}",
-                gamePort = _serverData.ServerPort,
-                queryPort = _serverData.ServerQueryPort,
-                slotCount = _serverData.ServerMaxPlayer
-            };
-
-            // Convert the object to JSON format
-            string jsonContent = JsonConvert.SerializeObject(serverConfig, Formatting.Indented);
-
-            // Specify the file path
-            string filePath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "enshrouded_server.json");
-
-            // Write the JSON content to the file
-            File.WriteAllText(filePath, jsonContent);
         }
     }
 }
