@@ -37,5 +37,7 @@
 ### Fresh Server or wont start?
 - Install all files in _CommonRedist folder
 
+![image](https://github.com/ohmcodes/WindowsGSM.Enshrouded/assets/6821381/62c2d651-c90f-4ce0-bc28-80b4c5c57c94)
+
 # License
 This project is licensed under the MIT License - see the <a href="https://github.com/ohmcodes/WindowsGSM.Enshrouded/blob/main/LICENSE">LICENSE.md</a> file for details
