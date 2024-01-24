@@ -69,7 +69,12 @@ namespace WindowsGSM.Plugins
             }
 
             // Prepare start parameter
-            string param = "";
+            string param = $" {_serverData.ServerParam} ";
+			param += $"-ip=\"{_serverData.ServerIP}\" ";
+            param += $"-gamePort={_serverData.ServerPort} ";
+            param += $"-queryPort={_serverData.ServerQueryPort} ";
+            param += $"-slotCount={_serverData.ServerMaxPlayer} ";
+            param += $"-name=\"\"\"{_serverData.ServerName}\"\"\"";
 
             // Prepare Process
             var p = new Process

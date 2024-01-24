@@ -1,6 +1,8 @@
 # WindowsGSM.Enshrouded
 🧩WindowsGSM plugin that provides Enshrouded Dedicated server
 
+# Please leave a start if you like it!
+
 # WindowsGSM Installation: 
 1. Download  WindowsGSM https://windowsgsm.com/ 
 2. Create a Folder at a Location you wan't all Server to be Installed and Run.
@@ -23,8 +25,14 @@
 🕹️ https://store.steampowered.com/app/1203620/Enshrouded/
 
 ### Dedicated server info
-🖥️ https://steamdb.info/app/13155682/info/
+🖥️ https://steamdb.info/app/2278520/info/
 
+### Available params
+```
+-password=""
+-saveDirectory=""
+-logDirectory=""
+```
 
 # License
 This project is licensed under the MIT License - see the <a href="https://github.com/ohmcodes/WindowsGSM.Enshrouded/blob/main/LICENSE">LICENSE.md</a> file for details
