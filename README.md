@@ -44,5 +44,16 @@ Note: Overriding params doesn't work yet edit the config file instead find enshr
 
 ![image](https://github.com/ohmcodes/WindowsGSM.Enshrouded/assets/6821381/62c2d651-c90f-4ce0-bc28-80b4c5c57c94)
 
+### Support
+[Enshrouded](https://discord.com/channels/1046840540550942720/1199771073605021777)
+[WGSM](https://discord.com/channels/590590698907107340/645730252672335893)
+
+# Give Love!
+[Buy me a coffee](https://www.buymeacoffee.com/ohmcodes)
+
+[Paypal](https://www.paypal.com/donate/?business=8389QZ23QRDPE&no_recurring=0&item_name=Game+Server%2FTools+Community+Donations&currency_code=CAD)
+
+
+
 # License
 This project is licensed under the MIT License - see the <a href="https://github.com/ohmcodes/WindowsGSM.Enshrouded/blob/main/LICENSE">LICENSE.md</a> file for details
