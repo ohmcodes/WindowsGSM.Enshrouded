@@ -147,7 +147,7 @@ namespace WindowsGSM.Plugins
             {
                 Functions.ServerConsole.SetMainWindow(p.MainWindowHandle);
                 Functions.ServerConsole.SendWaitToMainWindow("^c");
-                p.WaitForExit(20000);
+                p.WaitForExit(2000);
             });
         }
         public async Task<Process> Install()
