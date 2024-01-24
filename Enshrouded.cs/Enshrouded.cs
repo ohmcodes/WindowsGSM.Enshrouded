@@ -5,6 +5,7 @@ using WindowsGSM.Functions;
 using WindowsGSM.GameServer.Query;
 using WindowsGSM.GameServer.Engine;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace WindowsGSM.Plugins
 {
@@ -22,7 +23,7 @@ namespace WindowsGSM.Plugins
         };
 
         // - Settings properties for SteamCMD installer
-        public override bool loginAnonymous => true;
+        public override bool loginAnonymous => false;
         public override string AppId => "2278520"; // Game server appId Steam
 
         // - Standard Constructor and properties
@@ -55,7 +56,26 @@ namespace WindowsGSM.Plugins
         // - Create a default cfg for the game server after installation
         public async void CreateServerCFG()
         {
-            //No config file seems
+            var serverConfig = new
+            {
+                name = $"{_serverData.ServerName}",
+                password = "",
+                saveDirectory = "./savegame",
+                logDirectory = "./logs",
+                ip = $"{_serverData.ServerIP}",
+                gamePort = _serverData.ServerPort,
+                queryPort = _serverData.ServerQueryPort,
+                slotCount = _serverData.ServerMaxPlayer
+            };
+
+            // Convert the object to JSON format
+            string jsonContent = JsonConvert.SerializeObject(serverConfig, Formatting.Indented);
+
+            // Specify the file path
+            string filePath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "enshrouded_server.json");
+
+            // Write the JSON content to the file
+            File.WriteAllText(filePath, jsonContent);
         }
 
         // - Start server function, return its Process to WindowsGSM
