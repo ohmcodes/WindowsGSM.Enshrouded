@@ -34,5 +34,8 @@
 -logDirectory=""
 ```
 
+### Fresh Server or wont start?
+- Install all files in _CommonRedist folder
+
 # License
 This project is licensed under the MIT License - see the <a href="https://github.com/ohmcodes/WindowsGSM.Enshrouded/blob/main/LICENSE">LICENSE.md</a> file for details
