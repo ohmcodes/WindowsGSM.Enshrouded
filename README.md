@@ -16,7 +16,7 @@
 5. Navigate "Servers" and Click "Install Game Server" and find "Enshrouded Dedicated Server [Enshrouded.cs]
 
 ### Official Documentation
-🗃️ TBD
+🗃️ https://enshrouded.zendesk.com/hc/en-us/articles/16055441447709-Dedicated-Server-Configuration
 
 ### Unofficial Documentation
 🗃️ https://www.survivalservers.com/wiki/index.php?title=How_to_Create_Enshrouded_Server_Guide
