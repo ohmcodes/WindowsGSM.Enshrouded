@@ -46,6 +46,7 @@ Note: Overriding params doesn't work yet edit the config file instead find enshr
 
 ### Support
 [Enshrouded](https://discord.com/channels/1046840540550942720/1199771073605021777)
+
 [WGSM](https://discord.com/channels/590590698907107340/645730252672335893)
 
 # Give Love!
