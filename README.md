@@ -1,7 +1,7 @@
 # WindowsGSM.Enshrouded
 🧩WindowsGSM plugin that provides Enshrouded Dedicated server
 
-# Please leave a star if you like it!
+# Please leave a 🔯star⭐ if you like it!
 
 # WindowsGSM Installation: 
 1. Download  WindowsGSM https://windowsgsm.com/ 
