@@ -56,26 +56,7 @@ namespace WindowsGSM.Plugins
         // - Create a default cfg for the game server after installation
         public async void CreateServerCFG()
         {
-            var serverConfig = new
-            {
-                name = $"{_serverData.ServerName}",
-                password = "",
-                saveDirectory = "./savegame",
-                logDirectory = "./logs",
-                ip = $"{_serverData.ServerIP}",
-                gamePort = _serverData.ServerPort,
-                queryPort = _serverData.ServerQueryPort,
-                slotCount = _serverData.ServerMaxPlayer
-            };
-
-            // Convert the object to JSON format
-            string jsonContent = JsonConvert.SerializeObject(serverConfig, Formatting.Indented);
-
-            // Specify the file path
-            string filePath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "enshrouded_server.json");
-
-            // Write the JSON content to the file
-            File.WriteAllText(filePath, jsonContent);
+            UpdateConfig();
         }
 
         // - Start server function, return its Process to WindowsGSM
@@ -95,6 +76,8 @@ namespace WindowsGSM.Plugins
             param += $"-queryPort={_serverData.ServerQueryPort} ";
             param += $"-slotCount={_serverData.ServerMaxPlayer} ";
             param += $"-name=\"\"\"{_serverData.ServerName}\"\"\"";
+
+            UpdateConfig();
 
             // Prepare Process
             var p = new Process
@@ -161,6 +144,12 @@ namespace WindowsGSM.Plugins
             var (p, error) = await Installer.SteamCMD.UpdateEx(serverData.ServerID, AppId, validate, custom: custom, loginAnonymous: loginAnonymous);
             Error = error;
             await Task.Run(() => { p.WaitForExit(); });
+
+            if( error != null && p != null)
+            {
+                UpdateConfig();
+            }
+
             return p;
         }
 
@@ -183,6 +172,30 @@ namespace WindowsGSM.Plugins
         {
             var steamCMD = new Installer.SteamCMD();
             return await steamCMD.GetRemoteBuild(AppId);
+        }
+
+        public void UpdateConfig()
+        {
+            var serverConfig = new
+            {
+                name = $"{_serverData.ServerName}",
+                password = "",
+                saveDirectory = "./savegame",
+                logDirectory = "./logs",
+                ip = $"{_serverData.ServerIP}",
+                gamePort = _serverData.ServerPort,
+                queryPort = _serverData.ServerQueryPort,
+                slotCount = _serverData.ServerMaxPlayer
+            };
+
+            // Convert the object to JSON format
+            string jsonContent = JsonConvert.SerializeObject(serverConfig, Formatting.Indented);
+
+            // Specify the file path
+            string filePath = Functions.ServerPath.GetServersServerFiles(_serverData.ServerID, "enshrouded_server.json");
+
+            // Write the JSON content to the file
+            File.WriteAllText(filePath, jsonContent);
         }
     }
 }
