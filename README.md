@@ -35,6 +35,9 @@ Note: Overriding params doesn't work yet edit the config file instead find enshr
 -logDirectory=""
 ```
 
+### GLST
+- To add GLST to help steam list your server https://steamcommunity.com/dev/managegameservers
+
 ### Fresh Server or wont start? Install list below
 - All files in _CommonRedist folder
 - Steam Launcher too fixes most issues
