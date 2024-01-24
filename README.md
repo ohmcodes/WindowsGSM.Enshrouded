@@ -29,6 +29,7 @@
 
 ### Available params
 ```
+Note: Overriding params doesn't work yet edit the config file instead find enshrouded_server.json
 -password=""
 -saveDirectory=""
 -logDirectory=""
