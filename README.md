@@ -35,8 +35,12 @@ Note: Overriding params doesn't work yet edit the config file instead find enshr
 -logDirectory=""
 ```
 
-### Fresh Server or wont start?
-- Install all files in _CommonRedist folder
+### Fresh Server or wont start? Install list below
+- All files in _CommonRedist folder
+- Steam Launcher too fixes most issues
+- Latest DirectX
+
+### Sample image
 
 ![image](https://github.com/ohmcodes/WindowsGSM.Enshrouded/assets/6821381/62c2d651-c90f-4ce0-bc28-80b4c5c57c94)
 
