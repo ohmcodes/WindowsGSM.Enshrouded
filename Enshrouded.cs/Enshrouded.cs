@@ -103,9 +103,8 @@ namespace WindowsGSM.Plugins
                 {
                     WorkingDirectory = ServerPath.GetServersServerFiles(_serverData.ServerID),
                     FileName = shipExePath,
-                    Arguments = param,
+                    Arguments = param.ToString(),
                     WindowStyle = ProcessWindowStyle.Hidden,
-                    CreateNoWindow = true,
                     UseShellExecute = false
                 },
                 EnableRaisingEvents = true
