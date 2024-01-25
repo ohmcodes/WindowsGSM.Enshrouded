@@ -43,6 +43,10 @@ Note: Overriding params doesn't work yet edit the config file instead find enshr
 - Steam Launcher too fixes most issues
 - Latest DirectX
 
+### More Notes
+- If you are using VM use `host` when you select CPU
+- IP should be your local server IP eg: `192.168.x.x` or else it will crash
+
 ### Sample image
 
 ![image](https://github.com/ohmcodes/WindowsGSM.Enshrouded/assets/6821381/62c2d651-c90f-4ce0-bc28-80b4c5c57c94)
