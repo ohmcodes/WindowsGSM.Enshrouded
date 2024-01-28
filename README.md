@@ -50,6 +50,14 @@ Note: Overriding params doesn't work yet edit the config file instead find enshr
 - One way to try if you are having a problem searching your server
 - Install SteamCMD or Install the dedicated server using steam launcher then
 - run the server if your server shows up then blame the plugin for blocking your server
+- if still doesnt shows up, try checking your firewall inbounds or allowing both dedicated exe and WGSM
+- Confirm if you were able to host another dedicated without a problem if this is your 1st time
+- Call your ISP if you are even allowed to port forward
+- If still doesn't show up after everything confirm maybe the game is not region lock and show thousand of
+- dedicated servers wait until they implement direct connect so you can connect to your own server or
+- maybe have you tried Steam servers? add your server to your favorite and connect
+- If you just start your server wait for awhile take 5-10minutes for steam to list your server don't
+- rack the start/stop button it wont help you
 
 ### Sample image
 
