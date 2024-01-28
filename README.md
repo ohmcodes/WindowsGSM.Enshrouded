@@ -47,6 +47,9 @@ Note: Overriding params doesn't work yet edit the config file instead find enshr
 - If you are using VM use `host` when you select CPU
 - IP should be your local server IP eg: `192.168.x.x` or else it will crash
 - If you encounter `game creation failed` just change something in the config
+- One way to try if you are having a problem searching your server
+- Install SteamCMD or Install the dedicated server using steam launcher then
+- run the server if your server shows up then blame the plugin for blocking your server
 
 ### Sample image
 
