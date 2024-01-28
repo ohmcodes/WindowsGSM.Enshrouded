@@ -41,7 +41,7 @@ Note: Overriding params doesn't work yet edit the config file instead find enshr
 ### Adding your server to your favorite for easy connect
 - Go to your Steam Launcher (Where your Enshrouded game installed)
 - Click View (Top Menus) > Game Servers > Favorites > Click + button at the buttom beside Connect button
-- input your IP:PORT (don't put your game port this should be query port)
+- input your IP:PORT (don't put your game port it should be query port)
 - for example x.x.x.x:15637 and connect to your server
 
 ### Fresh Server or wont start? Install list below
