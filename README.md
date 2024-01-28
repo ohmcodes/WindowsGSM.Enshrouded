@@ -46,6 +46,7 @@ Note: Overriding params doesn't work yet edit the config file instead find enshr
 ### More Notes
 - If you are using VM use `host` when you select CPU
 - IP should be your local server IP eg: `192.168.x.x` or else it will crash
+- If you encounter `game creation failed` just change something in the config
 
 ### Sample image
 
