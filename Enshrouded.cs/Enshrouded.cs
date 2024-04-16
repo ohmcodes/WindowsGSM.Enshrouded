@@ -17,7 +17,7 @@ namespace WindowsGSM.Plugins
             name = "WindowsGSM.Enshrouded", // WindowsGSM.XXXX
             author = "ohmcodes",
             description = "WindowsGSM plugin for supporting Enshrouded Dedicated Server",
-            version = "1.0.2",
+            version = "1.0.3",
             url = "https://github.com/ohmcodes/WindowsGSM.Enshrouded", // Github repository link (Best practice)
             color = "#34c9eb" // Color Hex
         };
@@ -63,9 +63,9 @@ namespace WindowsGSM.Plugins
                 saveDirectory = "./savegame",
                 logDirectory = "./logs",
                 ip = $"{_serverData.ServerIP}",
-                gamePort = _serverData.ServerPort,
-                queryPort = _serverData.ServerQueryPort,
-                slotCount = _serverData.ServerMaxPlayer
+                gamePort = Int32.Parse(_serverData.ServerPort),
+                queryPort = Int32.Parse(_serverData.ServerQueryPort),
+                slotCount = Int32.Parse(_serverData.ServerMaxPlayer)
             };
 
             // Convert the object to JSON format
