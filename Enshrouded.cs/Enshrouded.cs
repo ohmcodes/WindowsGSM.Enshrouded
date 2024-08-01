@@ -126,35 +126,34 @@ namespace WindowsGSM.Plugins
                 {
                     new
                     {
-                        name = "Admin",
-                        password = AdminPassword,
-                        canKickBan = true,
-                        canAccessInventories = true,
-                        canEditBase = true,
-                        canExtendBase = true,
-                        reservedSlots = 0
-                    },
-                    new
-                    {
-                        name = "Friend",
-                        password = FriendPassword,
-                        canKickBan = false,
-                        canAccessInventories = true,
-                        canEditBase = true,
-                        canExtendBase = false,
-                        reservedSlots = 0
-                    },
-                    new
-                    {
-                        name = "Guest",
-                        password = GuestPassword,
-                        canKickBan = false,
-                        canAccessInventories = false,
-                        canEditBase = false,
-                        canExtendBase = false,
-                        reservedSlots = 0
-                    }
-                }
+	                name = "Admin",
+	                password = "Admin" + AdminPassword,
+	                canKickBan = true,
+	                canAccessInventories = true,
+	                canEditBase = true,
+	                canExtendBase = true,
+	                reservedSlots = 0
+	            },
+	            new
+	            {
+	                name = "Friend",
+	                password = "Friend" + FriendPassword,
+	                canKickBan = false,
+	                canAccessInventories = true,
+	                canEditBase = true,
+	                canExtendBase = false,
+	                reservedSlots = 0
+	            },
+	            new
+	            {
+	                name = "Guest",
+	                password = "Guest" + GuestPassword,
+	                canKickBan = false,
+	                canAccessInventories = false,
+	                canEditBase = false,
+	                canExtendBase = false,
+	                reservedSlots = 0
+	            }
             };
 
             // Convert the object to JSON format
