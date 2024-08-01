@@ -154,6 +154,7 @@ namespace WindowsGSM.Plugins
 	                canExtendBase = false,
 	                reservedSlots = 0
 	            }
+                }
             };
 
             // Convert the object to JSON format
