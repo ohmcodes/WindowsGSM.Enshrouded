@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using WindowsGSM.Functions;
 using WindowsGSM.GameServer.Query;
@@ -52,10 +53,31 @@ namespace WindowsGSM.Plugins
 
         public string Additional = "-log"; // Additional server start parameter
 
+        // Random Passwords for UserGroups
+        public string AdminPassword;
+        public string FriendPassword;
+        public string GuestPassword;
+
+        private static Random random = new Random();
+
+        private string GenerateRandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public void GeneratePasswords()
+        {
+            AdminPassword = GenerateRandomString(8);
+            FriendPassword = GenerateRandomString(8);
+            GuestPassword = GenerateRandomString(8);
+        }
 
         // - Create a default cfg for the game server after installation
         public async void CreateServerCFG()
         {
+            GeneratePasswords();
+
             var serverConfig = new
             {
                 name = $"{_serverData.ServerName}",
@@ -65,7 +87,74 @@ namespace WindowsGSM.Plugins
                 ip = $"{_serverData.ServerIP}",
                 gamePort = Int32.Parse(_serverData.ServerPort),
                 queryPort = Int32.Parse(_serverData.ServerQueryPort),
-                slotCount = Int32.Parse(_serverData.ServerMaxPlayer)
+                slotCount = Int32.Parse(_serverData.ServerMaxPlayer),
+                gameSettingsPreset = "Default",
+                gameSettings = new
+                {
+                    playerHealthFactor = 1,
+                    playerManaFactor = 1,
+                    playerStaminaFactor = 1,
+                    enableDurability = true,
+                    enableStarvingDebuff = false,
+                    foodBuffDurationFactor = 1,
+                    fromHungerToStarving = 600000000000,
+                    shroudTimeFactor = 1,
+                    tombstoneMode = "AddBackpackMaterials",
+                    miningDamageFactor = 1,
+                    plantGrowthSpeedFactor = 1,
+                    resourceDropStackAmountFactor = 1,
+                    factoryProductionSpeedFactor = 1,
+                    perkUpgradeRecyclingFactor = 0.500000,
+                    perkCostFactor = 1,
+                    experienceCombatFactor = 1,
+                    experienceMiningFactor = 1,
+                    experienceExplorationQuestsFactor = 1,
+                    randomSpawnerAmount = "Normal",
+                    aggroPoolAmount = "Normal",
+                    enemyDamageFactor = 1,
+                    enemyHealthFactor = 1,
+                    enemyStaminaFactor = 1,
+                    enemyPerceptionRangeFactor = 1,
+                    bossDamageFactor = 1,
+                    bossHealthFactor = 1,
+                    threatBonus = 1,
+                    pacifyAllEnemies = false,
+                    dayTimeDuration = 1800000000000,
+                    nightTimeDuration = 720000000000
+                },
+                userGroups = new[]
+                {
+                    new
+                    {
+                        name = "Admin",
+                        password = AdminPassword,
+                        canKickBan = true,
+                        canAccessInventories = true,
+                        canEditBase = true,
+                        canExtendBase = true,
+                        reservedSlots = 0
+                    },
+                    new
+                    {
+                        name = "Friend",
+                        password = FriendPassword,
+                        canKickBan = false,
+                        canAccessInventories = true,
+                        canEditBase = true,
+                        canExtendBase = false,
+                        reservedSlots = 0
+                    },
+                    new
+                    {
+                        name = "Guest",
+                        password = GuestPassword,
+                        canKickBan = false,
+                        canAccessInventories = false,
+                        canEditBase = false,
+                        canExtendBase = false,
+                        reservedSlots = 0
+                    }
+                }
             };
 
             // Convert the object to JSON format
