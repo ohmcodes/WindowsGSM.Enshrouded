@@ -18,7 +18,7 @@ namespace WindowsGSM.Plugins
             name = "WindowsGSM.Enshrouded", // WindowsGSM.XXXX
             author = "ohmcodes",
             description = "WindowsGSM plugin for supporting Enshrouded Dedicated Server",
-            version = "1.0.3",
+            version = "1.0.4",
             url = "https://github.com/ohmcodes/WindowsGSM.Enshrouded", // Github repository link (Best practice)
             color = "#34c9eb" // Color Hex
         };
