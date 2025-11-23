@@ -18,7 +18,7 @@ namespace WindowsGSM.Plugins
             name = "WindowsGSM.Enshrouded", // WindowsGSM.XXXX
             author = "ohmcodes",
             description = "WindowsGSM plugin for supporting Enshrouded Dedicated Server",
-            version = "1.0.4",
+            version = "1.1.0",
             url = "https://github.com/ohmcodes/WindowsGSM.Enshrouded", // Github repository link (Best practice)
             color = "#34c9eb" // Color Hex
         };
@@ -57,6 +57,7 @@ namespace WindowsGSM.Plugins
         public string AdminPassword;
         public string FriendPassword;
         public string GuestPassword;
+        public string VisitorPassword;
 
         private static Random random = new Random();
 
@@ -71,6 +72,7 @@ namespace WindowsGSM.Plugins
             AdminPassword = GenerateRandomString(8);
             FriendPassword = GenerateRandomString(8);
             GuestPassword = GenerateRandomString(8);
+            VisitorPassword = GenerateRandomString(8);
         }
 
         // - Create a default cfg for the game server after installation
@@ -84,9 +86,9 @@ namespace WindowsGSM.Plugins
                 saveDirectory = "./savegame",
                 logDirectory = "./logs",
                 ip = $"{_serverData.ServerIP}",
-                gamePort = Int32.Parse(_serverData.ServerPort),
                 queryPort = Int32.Parse(_serverData.ServerQueryPort),
                 slotCount = Int32.Parse(_serverData.ServerMaxPlayer),
+                tags = new string[]{},
                 voiceChatMode = "Proximity",
                 enableVoiceChat = false,
                 enableTextChat = false,
@@ -97,6 +99,7 @@ namespace WindowsGSM.Plugins
                     playerManaFactor = 1,
                     playerStaminaFactor = 1,
                     playerBodyHeatFactor = 1,
+                    playerDivingTimeFactor = 1,
                     enableDurability = true,
                     enableStarvingDebuff = false,
                     foodBuffDurationFactor = 1,
@@ -105,6 +108,7 @@ namespace WindowsGSM.Plugins
                     tombstoneMode = "AddBackpackMaterials",
                     enableGliderTurbulences = true,							   
                     weatherFrequency = "Normal",
+                    fishingDifficulty = "Normal",
                     miningDamageFactor = 1,
                     plantGrowthSpeedFactor = 1,
                     resourceDropStackAmountFactor = 1,
@@ -126,41 +130,57 @@ namespace WindowsGSM.Plugins
                     pacifyAllEnemies = false,
                     tamingStartleRepercussion = "LoseSomeProgress",
                     dayTimeDuration = 1800000000000,
-                    nightTimeDuration = 720000000000
+                    nightTimeDuration = 720000000000,
+                    curseModifier = "Normal"
                 },
                 userGroups = new[]
                 {
                     new
                     {
-	                name = "Admin",
-	                password = "Admin" + AdminPassword,
-	                canKickBan = true,
-	                canAccessInventories = true,
-	                canEditBase = true,
-	                canExtendBase = true,
-	                reservedSlots = 0
-	            },
-	            new
-	            {
-	                name = "Friend",
-	                password = "Friend" + FriendPassword,
-	                canKickBan = false,
-	                canAccessInventories = true,
-	                canEditBase = true,
-	                canExtendBase = false,
-	                reservedSlots = 0
-	            },
-	            new
-	            {
-	                name = "Guest",
-	                password = "Guest" + GuestPassword,
-	                canKickBan = false,
-	                canAccessInventories = false,
-	                canEditBase = false,
-	                canExtendBase = false,
-	                reservedSlots = 0
-	            }
-                }
+                        name = "Admin",
+                        password = "Admin" + AdminPassword,
+                        canKickBan = true,
+                        canAccessInventories = true,
+                        canEditWorld = true,
+                        canEditBase = true,
+                        canExtendBase = true,
+                        reservedSlots = 0
+                    },
+                    new
+                    {
+                        name = "Friend",
+                        password = "Friend" + FriendPassword,
+                        canKickBan = false,
+                        canAccessInventories = true,
+                        canEditWorld = true,
+                        canEditBase = true,
+                        canExtendBase = false,
+                        reservedSlots = 0
+                    },
+                    new
+                    {
+                        name = "Guest",
+                        password = "Guest" + GuestPassword,
+                        canKickBan = false,
+                        canAccessInventories = false,
+                        canEditWorld = true,
+                        canEditBase = false,
+                        canExtendBase = false,
+                        reservedSlots = 0
+                    },
+                    new
+                    {
+                        name = "Visitor",
+                        password = "Visitor" + VisitorPassword,
+                        canKickBan = false,
+                        canAccessInventories = false,
+                        canEditWorld = false,
+                        canEditBase = false,
+                        canExtendBase = false,
+                        reservedSlots = 0
+                    }
+                },
+                bans = new string[]{}
             };
 
             // Convert the object to JSON format
@@ -186,7 +206,6 @@ namespace WindowsGSM.Plugins
             // Prepare start parameter
             string param = $" {_serverData.ServerParam} ";
 			param += $"-ip=\"{_serverData.ServerIP}\" ";
-            param += $"-gamePort={_serverData.ServerPort} ";
             param += $"-queryPort={_serverData.ServerQueryPort} ";
             param += $"-slotCount={_serverData.ServerMaxPlayer} ";
             param += $"-name=\"\"\"{_serverData.ServerName}\"\"\"";
